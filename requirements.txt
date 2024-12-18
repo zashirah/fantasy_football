@@ -1,0 +1,5 @@
+notebook
+espn_api
+nfl_data_py
+duckdb
+jupyterlab
