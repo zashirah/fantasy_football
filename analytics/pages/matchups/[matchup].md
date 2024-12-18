@@ -11,7 +11,7 @@ where matchup = '${params.matchup}'
 ```sql home_matchup_players_filtered
 select 
     player_name, 
-    case when slot_position = 'BE' then False else True end as starter,
+    case when slot_position in ['IR', 'BE'] then False else True end as starter,
     points, 
     projected_points,
     position,
@@ -24,7 +24,6 @@ select
         when slot_position = 'D/ST' then 5
         when slot_position = 'K' then 6
     else 7 end as sortorder
-
 
 from nfl.box_players bp
 join ${matchups_filtered} mf
@@ -40,7 +39,7 @@ select
     player_name, 
     slot_position,
     position,
-    case when slot_position = 'BE' then False else True end as starter,
+    case when slot_position in ['IR', 'BE'] then False else True end as starter,
     points, 
     projected_points,
     position,
